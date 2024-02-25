@@ -160,10 +160,9 @@ public class AuthService implements UserDetailsService {
 
             authenticationRepository.delete(authentication);
 
-        } catch (NoSuchAlgorithmException | NoSuchPaddingException | InvalidKeyException e) {
+        } catch (NoSuchAlgorithmException | NoSuchPaddingException | InvalidKeyException |
+                 IllegalBlockSizeException | BadPaddingException | InvalidKeySpecException e) {
             throw new AccessDeniedException("잘못된 접근입니다.");
-        } catch (IllegalBlockSizeException | BadPaddingException | InvalidKeySpecException e) {
-            throw new RuntimeException(e);
         }
     }
 }
